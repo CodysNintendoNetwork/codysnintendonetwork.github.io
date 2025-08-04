@@ -5,7 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cody's Nintendo Network</title>
   <style>
-    /* Same styles as before, plus this new one: */
+    :root {
+      --bg-color: #0d1117;
+      --text-color: #c9d1d9;
+      --accent-color: #58a6ff;
+      --card-bg: #161b22;
+      --hover-glow: #1f6feb;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      animation: fadeIn 2s ease-out;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .typing {
+      font-size: 1.3rem;
+      color: var(--accent-color);
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--accent-color);
+      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(88, 166, 255, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px var(--hover-glow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background-color: var(--accent-color);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--hover-glow);
+    }
+
     .gh-card {
       display: flex;
       flex-direction: column;
@@ -44,6 +137,44 @@
       color: var(--accent-color);
       text-decoration: none;
     }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0d1117;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--hover-glow);
+    }
   </style>
 </head>
 <body>
@@ -52,6 +183,29 @@
     <h1>Cody's Nintendo Network</h1>
     <div class="typing">A place for bots, chaos, games, and code...</div>
   </header>
+
+  <section>
+    <h2>What's Here?</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Discord Bots</h3>
+        <p>Home to some slightly unhinged, fully functional bots made with love and spaghetti code.</p>
+      </div>
+      <div class="card">
+        <h3>APIs & Experiments</h3>
+        <p>Need a random fact? A slap command? Something that pings someone for no reason? Yup, that's here.</p>
+      </div>
+      <div class="card">
+        <h3>Nintendo Projects</h3>
+        <p>Splatoon stuff? Switch utilities? Some cursed Reggie shrine? You never know what you'll find.</p>
+      </div>
+      <div class="card">
+        <h3>More Coming Soon</h3>
+        <p>This site evolves with Cody’s mood. Check back later. Or don’t. It’s chill.</p>
+      </div>
+    </div>
+    <button onclick="window.location.href='https://github.com/CodyMKW'">Check Out the Code</button>
+  </section>
 
   <section>
     <h2>Featured Projects from GitHub</h2>
@@ -68,28 +222,32 @@
   <script>
     async function loadGitHubRepos() {
       const container = document.getElementById("github-projects");
-      const response = await fetch("https://api.github.com/users/CodyMKW/repos");
-      const repos = await response.json();
+      try {
+        const response = await fetch("https://api.github.com/users/CodyMKW/repos");
+        const repos = await response.json();
 
-      const sorted = repos
-        .filter(repo => !repo.fork)
-        .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-        .slice(0, 6); // limit to 6 projects
+        const sorted = repos
+          .filter(repo => !repo.fork)
+          .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+          .slice(0, 6); // Limit to 6
 
-      sorted.forEach(repo => {
-        const card = document.createElement("div");
-        card.className = "gh-card";
+        sorted.forEach(repo => {
+          const card = document.createElement("div");
+          card.className = "gh-card";
 
-        card.innerHTML = `
-          <h3>${repo.name}</h3>
-          <p>${repo.description || "No description provided."}</p>
-          <div class="gh-meta">
-            ⭐ ${repo.stargazers_count} — <a href="${repo.html_url}" target="_blank">View on GitHub</a>
-          </div>
-        `;
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || "No description provided."}</p>
+            <div class="gh-meta">
+              ⭐ ${repo.stargazers_count} — <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+            </div>
+          `;
 
-        container.appendChild(card);
-      });
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.innerHTML = "<p>Couldn't load GitHub repos. Try refreshing or check your username.</p>";
+      }
     }
 
     loadGitHubRepos();
