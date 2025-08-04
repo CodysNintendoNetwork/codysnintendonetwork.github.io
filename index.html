@@ -60,45 +60,6 @@
       margin-top: 2rem;
     }
 
-    .card {
-      background-color: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(88, 166, 255, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px var(--hover-glow);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      color: #fff;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #aaa;
-    }
-
-    button {
-      margin-top: 1.5rem;
-      padding: 0.7rem 1.5rem;
-      background-color: var(--accent-color);
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: var(--hover-glow);
-    }
-
     .gh-card {
       display: flex;
       flex-direction: column;
@@ -136,6 +97,22 @@
     .gh-meta a {
       color: var(--accent-color);
       text-decoration: none;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background-color: var(--accent-color);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--hover-glow);
     }
 
     footer {
@@ -182,33 +159,11 @@
   <header>
     <h1>Cody's Nintendo Network</h1>
     <div class="typing">A place for bots, chaos, games, and code...</div>
+    <button onclick="window.location.href='https://github.com/CodyMKW'">Visit My GitHub</button>
   </header>
 
   <section>
-    <h2>What's Here?</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Discord Bots</h3>
-        <p>Home to some slightly unhinged, fully functional bots made with love and spaghetti code.</p>
-      </div>
-      <div class="card">
-        <h3>APIs & Experiments</h3>
-        <p>Need a random fact? A slap command? Something that pings someone for no reason? Yup, that's here.</p>
-      </div>
-      <div class="card">
-        <h3>Nintendo Projects</h3>
-        <p>Splatoon stuff? Switch utilities? Some cursed Reggie shrine? You never know what you'll find.</p>
-      </div>
-      <div class="card">
-        <h3>More Coming Soon</h3>
-        <p>This site evolves with Cody’s mood. Check back later. Or don’t. It’s chill.</p>
-      </div>
-    </div>
-    <button onclick="window.location.href='https://github.com/CodyMKW'">Check Out the Code</button>
-  </section>
-
-  <section>
-    <h2>Featured Projects from GitHub</h2>
+    <h2>Featured GitHub Projects</h2>
     <div class="card-grid" id="github-projects">
       <!-- GitHub projects will be injected here -->
     </div>
