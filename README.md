@@ -1,17 +1,26 @@
 # Cody's Nintendo Network
 
-Welcome to **Cody's Nintendo Network**, the digital sandbox for one chaotic developer who likes to blend Nintendo, APIs, Discord bots, and mild internet gremlin energy.
+Welcome to **Cody's Nintendo Network** — a simple GitHub Pages site showing off my most recently updated projects.
 
-This site is hosted using GitHub Pages and includes:
-- ✅ Custom Discord bot projects
-- ✅ API endpoints made for fun (and sometimes usefulness)
-- ✅ Nintendo Switch-related utilities
-- ✅ Experimental pages, random tools, and chaos
+This site pulls live data from my GitHub profile and displays it automatically, so it stays up to date without me touching a thing.
+
+## ⚙️ What's Included?
+
+- 🔧 A clean dark theme
+- 💻 Recent GitHub repos auto-loaded via the GitHub API
+- 📂 Project cards with description, stars, and direct links
+- 🧠 Built with 100% client-side HTML/CSS/JS (no frameworks)
+
+## 🚀 Live Site
+
+> https://codysnintendonetwork.github.io
+
+## 📁 Powered By
+
+- Vanilla HTML, CSS, and JavaScript
+- GitHub Pages
+- The need to make cool stuff and show it off a little
 
 ---
 
-## 🔥 Featured Projects
-
-The homepage automatically shows some of my recent GitHub projects — powered by the GitHub API and JavaScript. Go check them out!
-
-> Built for fun, broken often, updated randomly.
+> Made by [CodyMKW](https://github.com/CodyMKW) — built for fun, updated randomly.
